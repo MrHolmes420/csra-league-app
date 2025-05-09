@@ -21,7 +21,7 @@ export default function Dashboard() {
         .from('games')
         .select('*, home_team:home_team_id(name), away_team:away_team_id(name)')
         .order('game_date');
-      setGames(data || []);
+      setGames((data as Game[]) || []);
     };
 
     const fetchHighlights = async () => {
