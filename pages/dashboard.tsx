@@ -1,6 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+
+type Game = any;
+type Highlight = any;
+type TopPlayer = any;
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,9 +11,9 @@ const supabase = createClient(
 );
 
 export default function Dashboard() {
-  const [games, setGames] = useState([]);
-  const [highlights, setHighlights] = useState([]);
-  const [topPlayers, setTopPlayers] = useState([]);
+  const [games, setGames] = useState<Game[]>([]);
+  const [highlights, setHighlights] = useState<Highlight[]>([]);
+  const [topPlayers, setTopPlayers] = useState<TopPlayer[]>([]);
 
   useEffect(() => {
     const fetchGames = async () => {
