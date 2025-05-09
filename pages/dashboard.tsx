@@ -30,12 +30,12 @@ export default function Dashboard() {
         .select('*, games!inner(game_date)')
         .limit(3)
         .order('created_at', { ascending: false });
-      setHighlights(data || []);
+      setHighlights((data as Highlight[]) || []);
     };
 
     const fetchTopPlayers = async () => {
       const { data } = await supabase.rpc('top_scorers');
-      setTopPlayers(data || []);
+      setTopPlayers((data as TopPlayer[]) || []);
     };
 
     fetchGames();
